@@ -1,7 +1,5 @@
 import React from "react";
-import './component/expenses/Expenses.css'
 import Expenses from "./component/expenses/Expenses";
-import Card from "./component/ui/Card";
 import NewExpense from "./component/new-expense/NewExpense";
 
 const App = () => {
@@ -31,12 +29,16 @@ const App = () => {
             date: new Date(2021, 5, 12),
         },
     ];
+
+    const addExpenseHandler = expense => {
+        console.log('In App.js');
+        console.log(expense);
+    };
+
     return (
         <div>
-            <NewExpense/>
-            <Card className='expenses'>
-                <Expenses expenses={expenses}/>
-            </Card>
+            <NewExpense onAddExpense={addExpenseHandler}/>
+            <Expenses expenses={expenses}/>
         </div>
     );
 }
